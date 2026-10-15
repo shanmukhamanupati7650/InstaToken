@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/instatoken.dir/link.d CMakeFiles/instatoken.dir/src/main.c.o -o instatoken

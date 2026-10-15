@@ -1,0 +1,3 @@
+/home/shannu/Projects/InstaToken/build/CMakeFiles/instatoken.dir
+/home/shannu/Projects/InstaToken/build/CMakeFiles/edit_cache.dir
+/home/shannu/Projects/InstaToken/build/CMakeFiles/rebuild_cache.dir

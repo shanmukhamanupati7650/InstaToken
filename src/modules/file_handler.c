@@ -76,7 +76,7 @@ int read_file_bytes(char path[], unsigned char **bytes, size_t *byte_size) {
     *bytes = (unsigned char *)malloc(*byte_size);
 
     if(*bytes != NULL) {
-        strcpy((char *)*bytes, file_bytes);
+        strcpy((unsigned char *)*bytes, file_bytes);
     } else {
         printf("Unable to allocate memory");
 

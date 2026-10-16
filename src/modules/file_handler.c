@@ -13,23 +13,23 @@ and returns file content in string
 ====================
 */
 char *read_file_string(char path[]) {
-    FILE *file = fopen(path, "r");
+    FILE *pFile = fopen(path, "r");
 
-    if(file == NULL) {
+    if(pFile == NULL) {
         printf("Unable to read file: %s", path);
 
-        fclose(file);
+        fclose(pFile);
         return "Error";
     }
 
     char each_line[COLUMN];
     static char file_content[COLUMN * ROW];
 
-    while(fgets(each_line, sizeof(each_line), file)) {
+    while(fgets(each_line, sizeof(each_line), pFile)) {
         strcat(file_content, each_line);
     }
 
-    fclose(file);
+    fclose(pFile);
     return file_content;
 }
 
@@ -40,18 +40,18 @@ returns -1 for failure and 0 for success
 ====================
 */
 int write_file_string(char path[], char file_content[]) {
-    FILE *file = fopen(path, "w");
+    FILE *pFile = fopen(path, "w");
 
-    if(file == NULL) {
+    if(pFile == NULL) {
         printf("Unable to access/write file: %s", path);
 
-        fclose(file);
+        fclose(pFile);
         return -1;
     }
 
-    fprintf(file, "%s", file_content);
+    fprintf(pFile, "%s", file_content);
 
-    fclose(file);
+    fclose(pFile);
     return 0;
 }
 
@@ -62,15 +62,15 @@ and bytes size pointer as argument and returns -1 for failure and 0 for success
 ====================
 */
 int read_file_bytes(char path[], unsigned char **bytes, size_t *byte_size) {
-    FILE *file = fopen(path, "rb");
+    FILE *pFile = fopen(path, "rb");
 
-    if(file == NULL) {
+    if(pFile == NULL) {
         printf("Unable to access/read file: %s", path);
         return -1;
     }
 
     unsigned char file_bytes[BYTES_LENGTH];
-    size_t file_byte_size = fread(file_bytes, 1, sizeof(file_bytes), file);
+    size_t file_byte_size = fread(file_bytes, 1, sizeof(file_bytes), pFile);
 
     *byte_size = file_byte_size;
     *bytes = (unsigned char *)malloc(*byte_size);
@@ -79,8 +79,11 @@ int read_file_bytes(char path[], unsigned char **bytes, size_t *byte_size) {
         strcpy((char *)*bytes, file_bytes);
     } else {
         printf("Unable to allocate memory");
+
+        fclose(pFile);
         return -1;
     }
 
+    fclose(pFile);
     return 0;
 }

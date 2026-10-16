@@ -8,4 +8,5 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 add_executable(instatoken
     src/main.c
+    src/modules/file_handler.c
 )

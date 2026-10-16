@@ -6,6 +6,12 @@
 #define ROW 1000
 #define BYTES_LENGTH 1024
 
+/*
+====================
+Reads the file in string by accepting path as argument 
+and returns file content in string
+====================
+*/
 char *read_file_string(char path[]) {
     FILE *file = fopen(path, "r");
 
@@ -27,6 +33,12 @@ char *read_file_string(char path[]) {
     return file_content;
 }
 
+/*
+====================
+Write the file in string by accepting path and content as arguments
+returns -1 for failure and 0 for success
+====================
+*/
 int write_file_string(char path[], char file_content[]) {
     FILE *file = fopen(path, "w");
 
@@ -43,6 +55,12 @@ int write_file_string(char path[], char file_content[]) {
     return 0;
 }
 
+/*
+====================
+Reads the file in bytes by accepting path, bytes pointer 
+and bytes size pointer as argument and returns -1 for failure and 0 for success
+====================
+*/
 int read_file_bytes(char path[], unsigned char **bytes, size_t *byte_size) {
     FILE *file = fopen(path, "rb");
 
